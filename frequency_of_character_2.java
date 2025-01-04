@@ -1,31 +1,44 @@
 //a java program to find the frequency of a character in a given string using a constructor
 
 import java.util.Scanner;
-public class String_frequency
+public class StringFrequency
 {
+	private String inputString;
+	private char inputChar;
+
+	public StringFrequency(String inputString, char inputChar)
+	{
+		this.inputString=inputString.toLowerCase();
+		this.inputChar=Character.toLowerCase(inputChar);
+	}
+
+	public int calculateFrequency()
+	{
+		int count=0,i;
+		for(i=0; i<inputString.length(); i++)
+		{
+			if(inputChar == inputString.charAt(i))
+			{
+				count++;
+			}
+		}
+		return count;
+	}
+
 	public static void main(String[] args)
 	{
-		String str, str1 ;
-		int i, len, count=0 ;
-		char ch, ch1 ;
+		String str;
+		char ch;
+
 		System.out.print("Enter a string : ");
 		Scanner s = new Scanner(System.in);
 		str = s.nextLine();
-		str1 = str.toLowerCase();
-		len = str.length();
-		System.out.print("Enter a character to find frequency : ");
-		Object Oriented Programming Lab
-		Department of Computer Science & Engineering Page 4
-		Scanner c = new Scanner(System.in);
-		ch = c.next().charAt(0);
-		ch1 = Character.toLowerCase(ch);
-		for(i=0;i<len;i++)
-		{
-			if(ch1 == str1.charAt(i))
-			{
-				count ++;
-			}
-		}
-		System.out.print("Frequency of the character is : "+count);
+
+		System.out.print("Enter a character to find its frequency : ");
+		ch = s.next().charAt(0);
+		StringFrequency stringFrequency = new StringFrequency(str,ch);
+		int frequency = stringFrequency.calculateFrequency();
+		System.out.print("Frequency of the character '"+ch+"' is: " +frequency);
+		s.close();
 	}
 }
